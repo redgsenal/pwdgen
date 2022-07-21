@@ -1,0 +1,11 @@
+{
+  "name": "pwdgen",
+  "version": "1.0.0",
+  "description": "generate random characters",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "reggie.senal@gmail.com",
+  "license": "ISC"
+}
