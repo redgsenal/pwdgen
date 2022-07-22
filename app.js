@@ -3,12 +3,12 @@
 // defaults
 // number of characters: 8;
 // number of samples : 10;
-// allow special characters: true;
-// allow numbers: true;
-// allow upper case: true;
-// allow lower case: true;
+// allow special characters: true; (8)
+// allow numbers: true; (10)
+// allow upper case: true; (26)
+// allow lower case: true; (26)
 // allow duplicates: false
-const defargs = { length: 16, samples: 10, special_chars: false, allow_nums: true, upp_case: true, low_case: true, allow_duplicates: false };
+const defargs = { length: 16, samples: 10, special_chars: true, allow_nums: true, upp_case: true, low_case: true, allow_duplicates: true };
 const special_chars = [33, 35, 36, 37, 38, 64, 42, 94];
 const appargs = defargs;
 const pickRange = { min: 33, max: 122 };
@@ -36,7 +36,7 @@ const pickChar = () => {
     return (!c) ? pickChar() : c;
 }
 
-// ascii 48 - 57 = 0 - 9
+// ascii 48 - 57 = 0 - 9 (10)
 const pickNumber = () => {
     if (!appargs.allow_nums) {
         return "";
@@ -117,6 +117,7 @@ const validateArgs = (args) => {
     appargs.allow_nums = args[3] ? boolValue(args[3], defargs.allow_nums) : defargs.allow_nums;
     appargs.upp_case = args[4] ? boolValue(args[4], defargs.upp_case) : defargs.upp_case;
     appargs.low_case = args[5] ? boolValue(args[5], defargs.low_case) : defargs.low_case;
+    appargs.allow_duplicates = args[6] ? boolValue(args[6], defargs.allow_duplicates) : defargs.allow_duplicates;
 }
 
 const main = (args = []) => {
