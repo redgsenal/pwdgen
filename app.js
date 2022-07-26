@@ -8,7 +8,7 @@
 // allow upper case: true; (26)
 // allow lower case: true; (26)
 // allow duplicates: false
-const defargs = { length: 16, samples: 10, special_chars: true, allow_nums: true, upp_case: true, low_case: true, allow_duplicates: true };
+const defargs = { length: 16, samples: 10, special_chars: false, allow_nums: true, upp_case: true, low_case: true, allow_duplicates: true };
 const special_chars = [33, 35, 36, 37, 38, 64, 42, 94];
 const appargs = defargs;
 const pickRange = { min: 33, max: 122 };
