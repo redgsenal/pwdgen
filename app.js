@@ -7,8 +7,9 @@
 // allow numbers: true; (10)
 // allow upper case: true; (26)
 // allow lower case: true; (26)
-// allow duplicates: false
-const defargs = { length: 16, samples: 10, special_chars: false, allow_nums: true, upp_case: true, low_case: true, allow_duplicates: true };
+// allow duplicates: false,
+// set a letter as first: true
+const defargs = { length: 16, samples: 10, special_chars: false, allow_nums: true, upp_case: true, low_case: true, allow_duplicates: true, letter_first: true };
 const special_chars = [33, 35, 36, 37, 38, 64, 42, 94];
 const appargs = defargs;
 const pickRange = { min: 33, max: 122 };
@@ -127,13 +128,17 @@ const main = (args = []) => {
     console.log(appargs);
     while (samples.length < appargs.samples) {
         while (pwd.length < appargs.length) {
-            let pc = pickChar();
-            if (!appargs.allow_duplicates) {
-                if (!pwd.includes(pc)) {
+            if (appargs.letter_first && pwd.length < 1) {
+                pwd[0] = pickLetter();
+            } else {
+                let pc = pickChar();
+                if (!appargs.allow_duplicates) {
+                    if (!pwd.includes(pc)) {
+                        pwd[pwd.length] = pc;
+                    }
+                } else {
                     pwd[pwd.length] = pc;
                 }
-            } else {
-                pwd[pwd.length] = pc;
             }
         }
         samples[samples.length] = pwd.join("");
